@@ -1,5 +1,7 @@
 # Flight Predictions
 
+![flights](https://user-images.githubusercontent.com/47621473/59705749-e0e83a80-91b3-11e9-9024-6e946e5a7175.png)
+
 Air travel has always been and still is a headache for many travelers. The unknowns of delays and cancellations are some of the biggest contributors to the stress. In this analysis we’ll attempt to shine a light on the unknowns and try to predict the probability of delay and even the delay length of a given future flight. We’ll take a look at 15 years of airline performance data, containing over 75 million flights in a dataset available from US Department of Transportation.
 
 ### Prerequisites
@@ -51,12 +53,9 @@ In summary, the following steps were taken:
 
 We started with the fastest and easiest implementation of Logistic Regression and Naïve Bayes classifiers. An 80/20 test/train split was utilized initially. We don’t have a concern about not having enough training data as the there are over 2M samples. Additionally, since there is a class imbalance in the dataset, only ~18% of flights tend to be delayed, we want to make sure this is taken into account. The goal is to be able to predict as many delayed flights accurately as possible, but also without sacrificing on-time predictions.
 
+We ultimately chose Random Forest as our final modeling algorithm due to ease of use and the ability to hypertune the parameters 
 
-
-### Boosting SVD predictions
-
-In order to improve SVD predictions we'll use Random Forest Classifier and Regressor algorithms to predict whether a user will like a given restaurant and what rating are they likely to give, respectively. We'll utilize each user's unique review style which was extracted from the LDA Topic modeling to help the algorithm learn users' preferences. 
-Once the training is complete we'll fit the entire dataset and combine SVD, RF Classifier, and RF Regressor into a single predicted star value for the given user/restaurant combination.
+![RF_model](https://user-images.githubusercontent.com/47621473/59705629-a2528000-91b3-11e9-9bc3-4524ce7ae14d.png)
 
 ## Results
 

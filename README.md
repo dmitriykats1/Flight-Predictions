@@ -51,25 +51,26 @@ In summary, the following steps were taken:
 
 ## Modeling
 
-We started with the fastest and easiest implementation of Logistic Regression and Naïve Bayes classifiers. An 80/20 test/train split was utilized initially. We don’t have a concern about not having enough training data as the there are over 2M samples. Additionally, since there is a class imbalance in the dataset, only ~18% of flights tend to be delayed, we want to make sure this is taken into account. The goal is to be able to predict as many delayed flights accurately as possible, but also without sacrificing on-time predictions.
+The goal for the the project was to predict, as accurately as possible if a flight will be delayed or not, which is a classification problem. We chose a number of ensemble learning methods and a final voting classifier to do the work.
 
-We ultimately chose Random Forest as our final modeling algorithm due to ease of use and the ability to hypertune the parameters 
-
-![RF_model](https://user-images.githubusercontent.com/47621473/59705629-a2528000-91b3-11e9-9bc3-4524ce7ae14d.png)
+Ultimately, Random Forest, XGBoost, and Extremely Randomized Trees were chosen as classifiers due to tuning capability and accuracy of these classifiers.
 
 ## Results
 
+Evaluating final results and metrics can be confusing for classification problems, and it ultimately comes down to what you're trying to measure. We are trying to classify delayed flights and on-time flights correctly, so we want to maximize our True Positive and True Negative rates. Or in other words, maximize percentage of correct predictions for both delayed and on-time flights.
 Interpreting the final results, we can calculate some key metrics:
 
- - Recall / Sensitivity: When the flight is actually on-time, how often does our model predict that it is on-time? Recall = 269,557 / 401,109 = 0.67
- - Precision: When the flight is predicted to be on-time, how often is the model predicting it to be on-time correctly? Precision = 269,557 299,732 = 0.90
- - False Positive Rate: When the flight is actually delayed, how often does it predict that it’s not? False Positive Rate = 131,552 / 90,673 = 1.45
- - True Negative Rate: When the flight is actually delayed, how often is the model correctly predicting that the flight is delayed?
- - True Negative Rate = 60,498 / 90,673 = 0.67
+ - Recall / Sensitivity: When the flight is actually on-time, how often does our model predict that it is on-time? Recall = 64,345 / 90,747 = 0.71
+ - True Negative Rate: When the flight is actually delayed, how often is the model correctly predicting that the flight is delayed? True Negative Rate = 60,982 / 91,094 = 0.67
 
-We were able to adjust and tune our model to predict ~67% of flights correctly whether it’s delayed or on-time. This was the goal of the project, to maximize prediction rate for both types of flights.
-
-
+### Voting Classifier Final Results
+ |- | Predicted On-time | Predicted Delayed | - |
+ |-- | --- | --- | ---|
+ |Actual On-time |64,345|26,402|90,747|
+ |Actual Delayed |30,112|60,982|91,094|
+ | -             |94,457|87,384| -    |
+ |Correct Prediction Delayed %|67%|-|
+ |Correct Prediction On-time %|71%|-|
 
 In this analysis we aimed to shine a light on flight delays and predict weather a future flight would be delayed or not. The flight data were acquired from US Department of Transportation. We focused only on 2017 data for this analysis.
 
